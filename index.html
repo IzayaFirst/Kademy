@@ -44,14 +44,14 @@
 									<div class="row">
 										<div class="col-md-4">
 											<div class="portlet light ">
-													<div class="portlet-title">
-														<div class="caption font-kademy">
+												<div class="portlet-title">
+													<div class="caption font-kademy">
 														<span class="caption-subject bold uppercase"> What is KADEMY ? </span>
 													</div>
-													</div>
-													<div class="portlet-body form">
-														<p>เพราะการเรียนรู้คือสิ่งสำคัญ Kademy ได้ตระหนักถึงความสำคัญของการเรียนรู้การเรียนในห้องเรียนคือสิ่งสำคัญ</p><br><br>
-													</div>
+												</div>
+												<div class="portlet-body form">
+													<p>เพราะการเรียนรู้คือสิ่งสำคัญ Kademy ได้ตระหนักถึงความสำคัญของการเรียนรู้การเรียนในห้องเรียนคือสิ่งสำคัญ</p><br><br>
+												</div>
 												
 											</div>
 										</div>
@@ -62,7 +62,6 @@
 														<i class="icon-settings font-kademy"></i>
 														<span class="caption-subject bold uppercase"> Login </span>
 													</div>
-
 												</div>
 												<div class="portlet-body form">
 													<form role="form" id="form_sample_2" class="form-horizontal" action="Login" method="post">
@@ -86,13 +85,14 @@
 															<div class="form-actions">
 																<div class="row">
 																	<div class="col-md-offset-2 col-md-10">
-																		<button type="submit" class="btn default">Login</button>
+																		<a id="loginbtn" class="btn default">Login</a>
 																	</div>
 																</div>
 															</div>
 														</form>
 													</div>
 												</div>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -101,40 +101,74 @@
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="page-wrapper-row">
-			<div class="page-wrapper-bottom">
-				<!-- BEGIN FOOTER -->
-				<!-- BEGIN PRE-FOOTER -->
-				<div class="page-prefooter">
-					<div class="container">
-						<div class="row">
-							<div class="col-md-3 col-sm-6 col-xs-12 footer-block">
-								<h2>About</h2>
-								<p> The powerful learning platform for KMUTT's Student</p>
+			<div class="page-wrapper-row">
+				<div class="page-wrapper-bottom">
+					<!-- BEGIN FOOTER -->
+					<!-- BEGIN PRE-FOOTER -->
+					<div class="page-prefooter">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+									<h2>About</h2>
+									<p> The powerful learning platform for KMUTT's Student</p>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
-				<!-- END PRE-FOOTER -->
-				<!-- BEGIN INNER FOOTER -->
-				<div class="page-footer">
-					<div class="container"> 2016 &copy; KADEMY 2016
+					<!-- END PRE-FOOTER -->
+					<!-- BEGIN INNER FOOTER -->
+					<div class="page-footer">
+						<div class="container"> 2016 &copy; KADEMY 2016
+						</div>
 					</div>
+					<div class="scroll-to-top">
+						<i class="icon-arrow-up"></i>
+					</div>
+					<!-- END INNER FOOTER -->
+					<!-- END FOOTER -->
 				</div>
-				<div class="scroll-to-top">
-					<i class="icon-arrow-up"></i>
-				</div>
-				<!-- END INNER FOOTER -->
-				<!-- END FOOTER -->
 			</div>
-		</div>
-		
-		<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
-		<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-		<script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
-		<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-		<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-		<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
-	</body>
-</html>
+			
+			<script src="assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+			<script src="assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+			<script src="assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+			<script src="assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+			<script src="assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+			<script src="assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+			<script src="https://www.gstatic.com/firebasejs/3.5.0/firebase.js"></script>
+			<script>
+			// Initialize Firebase
+			var config = {
+			apiKey: "AIzaSyDmlHzQFU6-4_0I1oL1G9plqLkT-6kuHFU",
+			authDomain: "int202-2a8e2.firebaseapp.com",
+			databaseURL: "https://int202-2a8e2.firebaseio.com",
+			storageBucket: "int202-2a8e2.appspot.com",
+			messagingSenderId: "124435175056"
+			};
+			var ref = firebase.initializeApp(config);
+			</script>
+			<script>
+				var btn = $('#loginbtn');
+				btn.click(function(){
+					var email = $('#form_control_1').val()+"@st.sit.kmutt.ac.th";
+					var password = $('#form_control_2').val();
+					firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
+							console.log(error.code);
+							console.log(error.message);
+						});
+				
+					firebase.auth().onAuthStateChanged(function(user) {
+					if (user) {
+						window.location.href = './main.html';
+
+					} else {
+						console.log("not login")			}
+					});
+				});
+			
+			
+			
+			
+			</script>
+		</body>
+	</html>
