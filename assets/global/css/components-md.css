@@ -144,7 +144,7 @@ body {
     -ms-border-radius: 0;
     -o-border-radius: 0;
     border-radius: 0;
-    color: #555555;
+    color: white;
     box-shadow: none;
     padding-left: 0;
     padding-right: 0;
@@ -6497,7 +6497,7 @@ Customized Bootstrap Labels
     background-color: #27a4b0; }
 
 .label-info {
-  background-color: #659be0; }
+  background-color: rgba(0, 0, 0, 0.37); }
   .label-info[href]:hover, .label-info[href]:focus {
     background-color: #3a80d7; }
 
@@ -7359,9 +7359,10 @@ Portlets
     padding: 15px; }
 
 /* Light Portlet */
+
 .portlet.light {
   padding: 12px 20px 15px 20px;
-  background-color: #fff; }
+  background-color: rgba(4, 4, 4, 0.48); }
   .portlet.light.bordered {
     border: 1px solid #e7ecf1 !important; }
     .portlet.light.bordered > .portlet-title {

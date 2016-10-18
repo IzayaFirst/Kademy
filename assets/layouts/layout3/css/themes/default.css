@@ -287,7 +287,7 @@ Page Header
 Page Footer 
 ******/
 .page-prefooter {
-  background: #48525e;
+  background: linear-gradient(#fdcc52,#fdc539);
   color: #a2abb7; }
   .page-prefooter h2 {
     color: #32c5d2; }
@@ -342,7 +342,7 @@ Page Footer
       background-color: #fff; }
 
 .page-footer {
-  background: #3b434c;
+  background: #222;
   color: #a2abb7; }
 
 /* Scroll Top */
